@@ -27,7 +27,7 @@ func main() {
 	// h := defmux.NewRouter(hs)
 	// h := routerchi.NewRouterChi(hs)
 	h := routeropenapi.NewRouterOpenAPI(hs)
-	srv := server.NewServer(":8000", h)
+	srv := server.NewServer(":"+os.Getenv("PORT"), h)
 
 	srv.Start(us)
 	log.Print("Start")
