@@ -17,7 +17,7 @@ func main() {
 
 	// ust := usermemstore.NewUsers()
 	// ust, err := userfilemanager.NewUsers("./data.json", "mem://userRefreshTopic")
-	ust, err := pgstore.NewUsers(os.Getenv("PG_DSN"))
+	ust, err := pgstore.NewUsers(os.Getenv("DATABASE_URL"))
 	if err != nil {
 		log.Fatal(err)
 	}
