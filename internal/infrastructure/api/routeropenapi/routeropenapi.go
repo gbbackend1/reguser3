@@ -20,13 +20,15 @@ type RouterOpenAPI struct {
 
 func NewRouterOpenAPI(hs *handler.Handlers) *RouterOpenAPI {
 	r := chi.NewRouter()
-	r.Use(auth.AuthMiddleware)
 
 	ret := &RouterOpenAPI{
 		hs: hs,
 	}
 
-	r.Mount("/", Handler(ret))
+	r.Group(func(r2 chi.Router) {
+		r2.Use(auth.AuthMiddleware)
+		r2.Mount("/", Handler(ret))
+	})
 
 	swg, err := GetSwagger()
 	if err != nil {
