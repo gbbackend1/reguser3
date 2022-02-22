@@ -1,5 +1,6 @@
-module goback1/lesson9
+module goback1/lesson9/reguser
 
+// +heroku goVersion go1.17
 go 1.17
 
 require (
